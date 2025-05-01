@@ -29,7 +29,7 @@
         <a
           href="https://chromewebstore.google.com/detail/okcbgnlkendjhkjdheinochpclghemhe/preview?hl=en&authuser=0"
           target="_blank"
-          class="bg-[#FFD900] m-auto text-black block w-44 py-3 rounded-full"
+          class="bg-[#FFD900] m-auto text-gray-700 block w-44 py-3 rounded-full"
           >Add to browser</a
         >
       </div>
@@ -37,13 +37,13 @@
       <div class="mt-5">
         <a
           href="#user-data"
-          class="text-white border m-auto font-extralight border-gray-400 block w-44 py-3 rounded-full"
+          class="text-gray-300 border m-auto font-extralight border-gray-400 block w-44 py-3 rounded-full"
           >Privacy Policy</a
         >
       </div>
     </section>
 
-    <section id="user-data" class="min-h-screen p-28">
+    <section id="user-data" class="min-h-screen p-28 relative">
       <div class="flex">
         <div class="flex-1 text-3xl">How is my data handled?</div>
         <div class="flex-1 font-light leading-relaxed">
@@ -70,6 +70,20 @@
             >.
           </p>
         </div>
+      </div>
+
+      <div
+        class="absolute bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
+      >
+        <p class="tracking-tight font-extralight text-3xl">
+          Convinced to take it up a notch?
+        </p>
+        <a
+          class="bg-[#FFD900] text-gray-700 text-center block w-44 py-3 rounded-full hover:cursor-pointer"
+          onclick="initTxn()"
+        >
+          Upgrade for $x
+        </a>
       </div>
     </section>
 
