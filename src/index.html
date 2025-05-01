@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
     <link rel="stylesheet" href="./output.css" />
     <title>Grok Pins</title>
   </head>
@@ -71,5 +72,46 @@
         </div>
       </div>
     </section>
+
+    <script>
+      function initTxn() {
+        const createOrderUrl = "http://localhost:8888/api/create-order";
+        const requestPayload = {
+          customer_details: {
+            customer_id: "CUSTOMER_UNIQUE_ID_12345",
+            customer_phone: "9876543210",
+          },
+          order_amount: 10.5,
+          order_currency: "INR",
+        };
+
+        fetch(createOrderUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(requestPayload),
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const cashfree = Cashfree({ mode: "sandbox" }); // "production" for live
+            cashfree
+              .checkout({
+                paymentSessionId: data.payment_session_id,
+                redirectTarget: "_blank", // Opens in new tab
+              })
+              .then(() => console.log("Payment initiated"));
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            sendResponse({ error: error.message });
+          });
+      }
+    </script>
   </body>
 </html>
