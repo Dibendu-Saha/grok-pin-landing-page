@@ -1,4 +1,4 @@
-function initTxn() {
+async function initTxn() {
   const createOrderUrl = "http://localhost:8888/api/create-order";
   const requestPayload = {
     customer_details: {
@@ -13,28 +13,26 @@ function initTxn() {
     },
   };
 
-  fetch(createOrderUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(requestPayload),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const cashfree = Cashfree({ mode: "sandbox" }); // "production" for live
-      cashfree.checkout({
-        paymentSessionId: data.payment_session_id,
-        redirectTarget: "_blank", // Opens in new tab
-      });
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      sendResponse({ error: error.message });
+  try {
+    const response = await fetch(createOrderUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestPayload),
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    const cashfree = Cashfree({ mode: "sandbox" }); // "production" for live
+    cashfree.checkout({
+      paymentSessionId: data.payment_session_id,
+      redirectTarget: "_blank", // Opens in new tab
+    });
+  } catch (error) {
+    console.error("Error:", error);
+  }
 }
