@@ -118,12 +118,10 @@
           })
           .then((data) => {
             const cashfree = Cashfree({ mode: "sandbox" }); // "production" for live
-            cashfree
-              .checkout({
-                paymentSessionId: data.payment_session_id,
-                redirectTarget: "_blank", // Opens in new tab
-              })
-              .then(() => console.log("Payment initiated"));
+            cashfree.checkout({
+              paymentSessionId: data.payment_session_id,
+              redirectTarget: "_blank", // Opens in new tab
+            });
           })
           .catch((error) => {
             console.error("Error:", error);
