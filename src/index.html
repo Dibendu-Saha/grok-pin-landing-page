@@ -95,8 +95,12 @@
             customer_id: "CUSTOMER_UNIQUE_ID_12345",
             customer_phone: "9876543210",
           },
-          order_amount: 10.5,
+          order_amount: 1,
           order_currency: "INR",
+          order_meta: {
+            // return_url: "https://grok.com/",
+            return_url: "http://127.0.0.1:5500/index.html#user-data",
+          },
         };
 
         fetch(createOrderUrl, {
