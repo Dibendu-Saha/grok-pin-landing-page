@@ -30,7 +30,7 @@ async function initTxn() {
     const cashfree = Cashfree({ mode: "sandbox" }); // "production" for live
     cashfree.checkout({
       paymentSessionId: data.payment_session_id,
-      redirectTarget: "_blank", // Opens in new tab
+      redirectTarget: "_blank",
     });
   } catch (error) {
     console.error("Error:", error);
