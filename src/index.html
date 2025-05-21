@@ -35,11 +35,7 @@
       </div>
 
       <div class="mt-5">
-        <a
-          href="#user-data"
-          class="text-gray-300 border m-auto font-extralight border-gray-400 block w-44 py-3 rounded-full"
-          >Privacy Policy</a
-        >
+        <a href="#user-data" class="text-gray-300 border m-auto font-extralight border-gray-400 block w-44 py-3 rounded-full">Privacy Policy</a>
       </div>
     </section>
 
@@ -47,43 +43,23 @@
       <div class="flex">
         <div class="flex-1 text-3xl">How is my data handled?</div>
         <div class="flex-1 font-light leading-relaxed">
-          <p>
-            We're very serious when it comes to user data. Your conversation
-            within Grok is stored on your machine and never leaves your system.
-          </p>
+          <p>We're very serious when it comes to user data. Your conversation within Grok is stored on your machine and never leaves your system.</p>
           <br />
 
-          <p>
-            We might collect uniquely generated user ID's (UUID's) in the near
-            future for the purpose of our extended functionality, but in no way
-            reveals a user's identity.
-          </p>
+          <p>We might collect uniquely generated user ID's (UUID's) in the near future for the purpose of our extended functionality, but in no way reveals a user's identity.</p>
           <br />
 
           <p>
             You can find more details about our privacy policy or contact us
-            <a
-              class="underline underline-offset-4"
-              href="privacy-policy.html"
-              target="_blank"
-              >here</a
-            >.
+            <a class="underline underline-offset-4" href="privacy-policy.html" target="_blank">here</a>.
           </p>
         </div>
       </div>
 
-      <div
-        class="absolute bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-      >
-        <p class="tracking-tight font-extralight text-3xl">
-          Convinced to take it up a notch?
-        </p>
-        <a
-          class="bg-[#FFD900] text-gray-700 text-center block w-44 py-3 rounded-full hover:cursor-pointer"
-          onclick="initTxn()"
-        >
-          Upgrade for $x
-        </a>
+      <div class="absolute bottom-40 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
+        <p id="pay-text" class="tracking-tight font-extralight text-3xl">Convinced to take it up a notch?</p>
+        <a id="pay-btn" class="bg-[#FFD900] text-gray-700 text-center block w-44 py-3 rounded-full hover:cursor-pointer" onclick="initTxn()"> Upgrade for $x </a>
+        <a id="redirect-btn" href="https://grok.com/" class="text-gray-700 text-center hidden w-44 py-3 rounded-full hover:cursor-pointer"></a>
       </div>
     </section>
 

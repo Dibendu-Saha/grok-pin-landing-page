@@ -74,7 +74,18 @@ async function getOrderStatus() {
 
   try {
     const response = await fetch(orderStatusUrl),
-      data = await response.json();
+      data = await response.json(),
+      payText = document.getElementById("pay-text"),
+      paybtn = document.getElementById("pay-btn"),
+      redirectbtn = document.getElementById("redirect-btn");
+
+    if (payText && paybtn && data && data.order_status === "PAID") {
+      payText.innerText = "Thank you for your purchase.";
+      paybtn.style.display = "none";
+      redirectbtn.style.display = "block";
+      redirectbtn.innerText = "Go to grok.com";
+      redirectbtn.style.backgroundColor = "#FFD900";
+    }
 
     console.log({ order_id: data.order_id, status: data.order_status });
   } catch {
